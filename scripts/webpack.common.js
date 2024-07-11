@@ -16,16 +16,15 @@ const mediaDir = path.join(rootDir, 'app', 'media');
 const packageConfig = JSON.parse(
   fs.readFileSync(path.join(rootDir, 'package.json'), 'utf8')
 );
-const workspace = process.env.PIOHOME_WORKSPACE || 'platformio';
-const theme = process.env.PIOHOME_THEME || 'dark';
-const themeModifyVars = Object.assign(
-  {},
-  packageConfig.themes[theme],
-  (packageConfig.workspaces[workspace].themes
-    ? packageConfig.workspaces[workspace].themes[theme]
-    : null) || {}
-);
+const workspace = process.env.PIOHOME_WORKSPACE || 'platformio'; // Default to 'platformio' if not set
+const theme = process.env.PIOHOME_THEME || 'dark'; // Default to 'dark' if not set
+const themes = packageConfig.themes || {}; // Access the 'themes' directly
 
+const themeConfig = themes[theme] || {}; // Get the specific theme configuration
+const themeModifyVars = {
+  ...themeConfig,
+  ...(packageConfig.workspaces && packageConfig.workspaces[workspace]?.themes?.[theme]),
+};
 module.exports = {
   workspace: workspace,
   theme: theme,

@@ -53,10 +53,10 @@
     "copy-webpack-plugin": "~9.0.1",
     "css-loader": "~6.5.0",
     "css-minimizer-webpack-plugin": "^3.1.1",
-    "eslint": "~8.1.0",
+    "eslint": "^8.1.0",
     "eslint-import-resolver-webpack": "~0.13.2",
     "eslint-plugin-import": "~2.25.2",
-    "eslint-plugin-react": "~7.26.1",
+    "eslint-plugin-react": "^7.26.1",
     "file-loader": "~6.2.0",
     "html-webpack-plugin": "~5.5.0",
     "less": "~3.12.2",
@@ -150,17 +150,8 @@
       "@placeholder-color": "darken(@text-color, 20%)"
     }
   },
-  "workspaces": {
-    "platformio": {},
-    "aceinna": {
-      "themes": {
-        "light": {
-          "@primary-color": "#0C7F7B"
-        },
-        "dark": {
-          "@primary-color": "#0C7F7B"
-        }
-      }
-    }
-  }
+  "workspaces": [
+    "platformio",
+    "aceinna"
+  ]
 }
