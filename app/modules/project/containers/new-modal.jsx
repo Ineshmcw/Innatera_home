@@ -48,11 +48,11 @@ class ProjectNewModal extends React.Component {
     this.state = {
       selectedFramework: null,
       useDefaultLocation: true,
-      useDefaultSpineLocation: true, //spine_change
+      useDefaultSpineLocation: true,
       frameworks: [],
       projectLocation: null,
-      spineLocation: null, //spine_change
-      showSpineExplorer: false, //spine_change
+      spineLocation: null,
+      showSpineExplorer: false,
       inProgress: false,
     };
   }
@@ -77,9 +77,9 @@ class ProjectNewModal extends React.Component {
     });
   }
 
-  onDidUseDefaultSpineLocation(e) {   //spine_change - Added method for handling spine location checkbox
+  onDidUseDefaultSpineLocation(e) {
     this.setState({
-       useDefaultSpineLocation: e.target.checked,
+      useDefaultSpineLocation: e.target.checked,
     });
   }
 
@@ -90,10 +90,10 @@ class ProjectNewModal extends React.Component {
     });
   }
 
-  onDidSpineLocation(spineLocation) {                                          //spine_change- location selection
-    this.props.form.resetFields(["isCustomSpineLocation"]);
-    this.setState({ 
-        spineLocation,
+  onDidSpineLocation(spineLocation) {
+    this.props.form.resetFields(['isCustomSpineLocation']);
+    this.setState({
+      spineLocation,
     });
   }
 
@@ -106,15 +106,19 @@ class ProjectNewModal extends React.Component {
       this.setState({
         inProgress: true,
       });
+  
+      const projectLocation = this.state.useDefaultLocation
+        ? this.props.projectsDir
+        : this.state.projectLocation;
+      const spineLocation = this.state.useDefaultSpineLocation
+        ? this.props.spineDir
+        : this.state.spineLocation;
+  
       this.props.initProject(
         values.board.id,
         this.state.selectedFramework,
-        path.join(
-          this.state.useDefaultLocation
-            ? this.props.projectsDir
-            : this.state.projectLocation,
-          values.name
-        ),
+        path.join(projectLocation, values.name),
+        spineLocation,
         (err, location) => {
           this.setState({
             inProgress: false,
@@ -290,7 +294,6 @@ class ProjectNewModal extends React.Component {
       </div>
     );
   }
-
 }
 
 // Redux
