@@ -304,7 +304,7 @@ function* watchInitProject() {
 
       result = yield call(backendFetchData, {
         query: 'project.init',
-        params: [board, framework, projectDir, spineDir],
+        params: [ board, framework, projectDir, spineDir ],
       });
 
       ReactGA.timing({
@@ -322,7 +322,12 @@ function* watchInitProject() {
       );
     } catch (_err) {
       err = _err;
-      yield put(coreActions.notifyError('Could not initialize project', err));
+      console.error('Error initializing project:', err);
+
+      yield put(coreActions.notifyError(
+        'Could not initialize project',
+        `Board: ${board}, framework: ${framework}, spinelocation: ${projectDir}, projectDir: ${projectDir}, result: ${result}`
+      ));
     } finally {
       if (onEnd) {
         yield call(onEnd, err, result);

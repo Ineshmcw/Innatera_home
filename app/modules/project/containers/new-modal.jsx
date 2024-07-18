@@ -48,11 +48,9 @@ class ProjectNewModal extends React.Component {
     this.state = {
       selectedFramework: null,
       useDefaultLocation: true,
-      useDefaultSpineLocation: true,
       frameworks: [],
       projectLocation: null,
-      spineLocation: null,
-      showSpineExplorer: false,
+      spineLocation: '',
       inProgress: false,
     };
   }
@@ -77,12 +75,6 @@ class ProjectNewModal extends React.Component {
     });
   }
 
-  onDidUseDefaultSpineLocation(e) {
-    this.setState({
-      useDefaultSpineLocation: e.target.checked,
-    });
-  }
-
   onDidProjectLocation(projectLocation) {
     this.props.form.resetFields(['isCustomLocation']);
     this.setState({
@@ -91,7 +83,6 @@ class ProjectNewModal extends React.Component {
   }
 
   onDidSpineLocation(spineLocation) {
-    this.props.form.resetFields(['isCustomSpineLocation']);
     this.setState({
       spineLocation,
     });
@@ -110,9 +101,9 @@ class ProjectNewModal extends React.Component {
       const projectLocation = this.state.useDefaultLocation
         ? this.props.projectsDir
         : this.state.projectLocation;
-      const spineLocation = this.state.useDefaultSpineLocation
-        ? this.props.spineDir
-        : this.state.spineLocation;
+      const spineLocation = this.state.spineLocation !== ''
+        ? this.state.spineLocation
+        : this.props.spineDir;
   
       this.props.initProject(
         values.board.id,
@@ -238,37 +229,21 @@ class ProjectNewModal extends React.Component {
         </Form.Item>
         {!this.state.useDefaultLocation && this.renderExplorer()}
         <Form.Item label="Spine" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
-          {getFieldDecorator('isCustomSpineLocation', {
+          {getFieldDecorator('spineLocation', {
             rules: [
               {
-                validator: (rule, value, callback) =>
-                  setTimeout(
-                    () =>
-                      callback(
-                        this.state.useDefaultSpineLocation || this.state.spineLocation
-                          ? undefined
-                          : true
-                      ),
-                    200
-                  ),
+                required: false,
                 message: 'Please select a custom spine folder location!',
               },
             ],
           })(
-            <Checkbox
-              onChange={::this.onDidUseDefaultSpineLocation}
-              checked={this.state.useDefaultSpineLocation}
-            >
-              Use default spine location
-            </Checkbox>
-          )}
-          {this.state.useDefaultSpineLocation && (
-            <div style={{ marginTop: '5px', color: 'gray' }}>
-              {`Default location for Spine folder is: "${this.props.spineDir}"`}
-            </div>
+            <Input
+              placeholder={`Enter custom spine folder location (default: "${this.props.spineDir}")`}
+              onChange={(e) => this.setState({ spineLocation: e.target.value })}
+              value={this.state.spineLocation}
+            />
           )}
         </Form.Item>
-        {!this.state.useDefaultSpineLocation && this.renderSpineExplorer()}
       </Form>
     );
   }
@@ -284,16 +259,6 @@ class ProjectNewModal extends React.Component {
     );
   }
 
-  renderSpineExplorer() {
-    return (
-      <div>
-        <div style={{ marginBottom: '5px' }}>
-          Choose a location for the Spine folder:
-        </div>
-        <FileExplorer ask="directory" onSelect={::this.onDidSpineLocation} />
-      </div>
-    );
-  }
 }
 
 // Redux
