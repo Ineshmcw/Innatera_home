@@ -48,6 +48,7 @@ class ProjectNewModal extends React.Component {
     this.state = {
       selectedFramework: null,
       useDefaultLocation: true,
+      useDefaultSpineLocation: true,
       frameworks: [],
       projectLocation: null,
       spineLocation: '',
@@ -74,6 +75,12 @@ class ProjectNewModal extends React.Component {
       useDefaultLocation: e.target.checked,
     });
   }
+  
+  onDidUseDefaultSpineLocation(e) {
+    this.setState({
+      useDefaultSpineLocation: e.target.checked,
+    });
+  }
 
   onDidProjectLocation(projectLocation) {
     this.props.form.resetFields(['isCustomLocation']);
@@ -83,6 +90,7 @@ class ProjectNewModal extends React.Component {
   }
 
   onDidSpineLocation(spineLocation) {
+    this.props.form.resetFields(['isCustomSpineLocation']);
     this.setState({
       spineLocation,
     });
@@ -101,9 +109,9 @@ class ProjectNewModal extends React.Component {
       const projectLocation = this.state.useDefaultLocation
         ? this.props.projectsDir
         : this.state.projectLocation;
-      const spineLocation = this.state.spineLocation !== ''
-        ? this.state.spineLocation
-        : this.props.spineDir;
+      const spineLocation = this.state.useDefaultSpineLocation
+        ? this.props.spineDir
+        : this.state.spineLocation;
   
       this.props.initProject(
         values.board.id,
@@ -229,21 +237,38 @@ class ProjectNewModal extends React.Component {
         </Form.Item>
         {!this.state.useDefaultLocation && this.renderExplorer()}
         <Form.Item label="Spine" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
-          {getFieldDecorator('spineLocation', {
+          {getFieldDecorator('isCustomSpineLocation', {
             rules: [
               {
-                required: false,
+                validator: (rule, value, callback) =>
+                  setTimeout(
+                    () =>
+                      callback(
+                        this.state.useDefaultSpineLocation || this.state.spineLocation
+                          ? undefined
+                          : true
+                      ),
+                    200
+                  ),
                 message: 'Please select a custom spine folder location!',
               },
             ],
           })(
-            <Input
-              placeholder={`Enter custom spine folder location (default: "${this.props.spineDir}")`}
-              onChange={(e) => this.setState({ spineLocation: e.target.value })}
-              value={this.state.spineLocation}
-            />
+            <Checkbox
+              onChange={::this.onDidUseDefaultSpineLocation}
+              checked={this.state.useDefaultSpineLocation}
+            >
+              Use default spine location
+              <Tooltip
+                title={`Default location for Spine folder is: "${this.props.spineDir}"`}
+                overlayStyle={{ wordBreak: 'break-all' }}
+              >
+                <Icon type="question-circle" style={{ marginLeft: '5px' }} />
+              </Tooltip>
+            </Checkbox>
           )}
         </Form.Item>
+        {!this.state.useDefaultSpineLocation && this.renderSpineExplorer()}
       </Form>
     );
   }
@@ -255,6 +280,17 @@ class ProjectNewModal extends React.Component {
           Choose a location where we will create project folder:
         </div>
         <FileExplorer ask="directory" onSelect={::this.onDidProjectLocation} />
+      </div>
+    );
+  }
+
+  renderSpineExplorer() {
+    return (
+      <div>
+        <div style={{ marginBottom: '5px' }}>
+          Choose a location for the Spine folder:
+        </div>
+        <FileExplorer ask="directory" onSelect={::this.onDidSpineLocation} />
       </div>
     );
   }
