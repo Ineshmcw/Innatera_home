@@ -17,7 +17,7 @@
 import * as actions from '../actions';
 import * as path from '../../core/path';
 
-import { Checkbox, Form, Icon, Input, Modal, Select, Tooltip } from 'antd';
+import { Checkbox, Form, Icon, Input, Modal, Select, Tooltip, Radio } from 'antd';
 
 import BoardSelect from '../../platform/containers/board-select';
 import FileExplorer from '../../core/containers/file-explorer';
@@ -53,6 +53,7 @@ class ProjectNewModal extends React.Component {
       projectLocation: null,
       spineLocation: '',
       inProgress: false,
+      projectTpe: '',
     };
   }
 
@@ -94,6 +95,10 @@ class ProjectNewModal extends React.Component {
     this.setState({
       spineLocation,
     });
+  }
+
+  onDidProjectType(projectType) {
+    console.log("projectType",projectType);
   }
 
   onDidFinish() {
@@ -269,11 +274,26 @@ class ProjectNewModal extends React.Component {
           )}
         </Form.Item>
         {!this.state.useDefaultSpineLocation && this.renderSpineExplorer()}
-        
-        {/* TODO: add a hint about the type of project(CPP, Python)   */}
-        <Form.Item label="Language" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
 
-        </Form.Item>
+        
+        <Form.Item label="Language" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
+          {getFieldDecorator('language', {
+            rules: [
+              {
+                required: true,
+                message: 'Please select a language!',
+              },
+            ],
+            initialValue: 'cpp',
+          })(
+
+          <Radio.Group size="large" buttonStyle="solid" onChange={::this.onDidProjectType }>
+            <Radio.Button value="cpp">C++</Radio.Button>
+            <Radio.Button value="py">Python</Radio.Button>
+          </Radio.Group>
+
+        )}
+      </Form.Item>
       </Form>
     );
   }
