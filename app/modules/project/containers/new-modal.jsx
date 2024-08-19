@@ -269,6 +269,11 @@ class ProjectNewModal extends React.Component {
           )}
         </Form.Item>
         {!this.state.useDefaultSpineLocation && this.renderSpineExplorer()}
+        
+        {/* TODO: add a hint about the type of project(CPP, Python)   */}
+        <Form.Item label="Language" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
+
+        </Form.Item>
       </Form>
     );
   }
