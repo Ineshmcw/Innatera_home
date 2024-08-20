@@ -41,6 +41,7 @@ class ProjectNewModal extends React.Component {
     openProject: PropTypes.func.isRequired,
     initProject: PropTypes.func.isRequired,
     osOpenUrl: PropTypes.func.isRequired,
+    language: PropTypes.string.isRequired,
   };
 
   constructor() {
@@ -53,7 +54,7 @@ class ProjectNewModal extends React.Component {
       projectLocation: null,
       spineLocation: '',
       inProgress: false,
-      projectTpe: '',
+      language: '',
     };
   }
 
@@ -96,9 +97,11 @@ class ProjectNewModal extends React.Component {
       spineLocation,
     });
   }
-
-  onDidProjectType(projectType) {
-    console.log("projectType",projectType);
+  onDidLanguageType(e) {
+    console.log("language from new-modal",e.target.value, "      ", e);
+    this.setState({
+      language: e.target.value,
+    });
   }
 
   onDidFinish() {
@@ -117,12 +120,15 @@ class ProjectNewModal extends React.Component {
       const spineLocation = this.state.useDefaultSpineLocation
         ? this.props.spineDir
         : this.state.spineLocation;
-  
+
+      const language = this.state.language;
+      console.log("language",language);
       this.props.initProject(
         values.board.id,
         this.state.selectedFramework,
         path.join(projectLocation, values.name),
         spineLocation,
+        language,
         (err, location) => {
           this.setState({
             inProgress: false,
@@ -274,7 +280,6 @@ class ProjectNewModal extends React.Component {
           )}
         </Form.Item>
         {!this.state.useDefaultSpineLocation && this.renderSpineExplorer()}
-
         
         <Form.Item label="Language" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
           {getFieldDecorator('language', {
@@ -287,7 +292,7 @@ class ProjectNewModal extends React.Component {
             initialValue: 'cpp',
           })(
 
-          <Radio.Group size="large" buttonStyle="solid" onChange={::this.onDidProjectType }>
+          <Radio.Group size="large" buttonStyle="outline" onChange={::this.onDidLanguageType }>
             <Radio.Button value="cpp">C++</Radio.Button>
             <Radio.Button value="py">Python</Radio.Button>
           </Radio.Group>
@@ -328,6 +333,7 @@ function mapStateToProps(state) {
   return {
     projectsDir: selectStorageItem(state, 'projectsDir'),
     spineDir: selectStorageItem(state, 'spineDir'),
+    language: selectStorageItem(state, 'language'),
   };
 }
 
