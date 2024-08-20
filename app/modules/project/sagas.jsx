@@ -296,7 +296,7 @@ function* watchImportProject() {
 
 function* watchInitProject() {
   while (true) {
-    const { board, framework, projectDir, spineDir, onEnd } = yield take(actions.INIT_PROJECT);
+    const { board, framework, projectDir, spineDir, language, onEnd } = yield take(actions.INIT_PROJECT);
     let err,
       result = null;
     try {
@@ -304,7 +304,7 @@ function* watchInitProject() {
 
       result = yield call(backendFetchData, {
         query: 'project.init',
-        params: [ board, framework, projectDir, spineDir ],
+        params: [ board, framework, projectDir, spineDir, language ],
       });
 
       ReactGA.timing({
@@ -326,7 +326,7 @@ function* watchInitProject() {
 
       yield put(coreActions.notifyError(
         'Could not initialize project',
-        `Board: ${board}, framework: ${framework}, spinelocation: ${projectDir}, projectDir: ${projectDir}, result: ${result}`
+        `Board: ${board}, framework: ${framework}, spinelocation: ${projectDir}, projectDir: ${projectDir}, result: ${result} , Language: ${language}`
       ));
     } finally {
       if (onEnd) {
