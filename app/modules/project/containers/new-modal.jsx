@@ -98,7 +98,6 @@ class ProjectNewModal extends React.Component {
     });
   }
   onDidLanguageType(e) {
-    console.log("language from new-modal",e.target.value, "      ", e);
     this.setState({
       language: e.target.value,
     });
