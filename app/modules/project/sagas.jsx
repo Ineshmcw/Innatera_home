@@ -304,7 +304,7 @@ function* watchInitProject() {
 
       result = yield call(backendFetchData, {
         query: 'project.init',
-        params: [ board, framework, projectDir, spineDir, language ],
+        params: [ board, framework, projectDir, spineDir,language],
       });
 
       ReactGA.timing({

@@ -43,7 +43,7 @@ export const importProject = (projectDir, onEnd = undefined) =>
 export const loadProjects = (force) => createAction(LOAD_PROJECTS, { force });
 export const projectsLoaded = () => createAction(PROJECTS_LOADED);
 export const initProject = (board, framework, projectDir, spineDir, language, onEnd = undefined) =>
-  createAction(INIT_PROJECT, { board, framework, projectDir, spineDir, language, onEnd });
+  createAction(INIT_PROJECT, { board, framework, projectDir, spineDir,language, onEnd });
 export const importArduinoProject = (
   board,
   useArduinoLibs,
