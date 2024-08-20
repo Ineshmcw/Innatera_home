@@ -54,7 +54,7 @@ class ProjectNewModal extends React.Component {
       projectLocation: null,
       spineLocation: '',
       inProgress: false,
-      language: '',
+      language: 'cpp',
     };
   }
 
@@ -122,7 +122,6 @@ class ProjectNewModal extends React.Component {
         : this.state.spineLocation;
 
       const language = this.state.language;
-      console.log("language",language);
       this.props.initProject(
         values.board.id,
         this.state.selectedFramework,
