@@ -298,7 +298,8 @@ function* watchInitProject() {
   while (true) {
     const { board, framework, projectDir, spineDir, language, onEnd } = yield take(actions.INIT_PROJECT);
     let err,
-      result = null;
+      result = null,
+      send_language = null;
     try {
       const start = new Date().getTime();
 
@@ -328,7 +329,28 @@ function* watchInitProject() {
         'Could not initialize project',
         `Board: ${board}, framework: ${framework}, spinelocation: ${projectDir}, projectDir: ${projectDir}, result: ${result} , Language: ${language}`
       ));
-    } finally {
+    }
+    finally {
+      if (onEnd) {
+        yield call(onEnd, err, result);
+      }
+    }
+  
+    try {
+      send_language = yield call(backendFetchData, {
+        query: 'ide.send_command',
+        params: ['get_project_language',language],
+      });   
+     }
+    catch (_err) {
+      err = _err;
+      console.error('Error sending language:', err);
+      yield put(coreActions.notifyError(
+        'Could not initialize project',
+        `Error in ${send_language}`
+      ));
+    }
+    finally {
       if (onEnd) {
         yield call(onEnd, err, result);
       }
