@@ -166,7 +166,7 @@ class ProjectNewModal extends React.Component {
           <b>update existing</b>. In the last case, you need to uncheck &quot;Use
           default location&quot; and specify path to existing project.
         </div>
-        <Form.Item label="Name" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
+        <Form.Item colon={false} label="Name" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
           {getFieldDecorator('name', {
             rules: [
               {
@@ -178,7 +178,7 @@ class ProjectNewModal extends React.Component {
             ],
           })(<Input placeholder="Project name" />)}
         </Form.Item>
-        <Form.Item label="Board" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
+        <Form.Item colon={false} label="Board" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
           {getFieldDecorator('board', {
             rules: [
               {
@@ -188,7 +188,7 @@ class ProjectNewModal extends React.Component {
             ],
           })(<BoardSelect onChange={::this.onDidBoard} />)}
         </Form.Item>
-        <Form.Item label="Framework" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
+        <Form.Item colon={false} label="Framework" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
           <Select
             value={this.state.selectedFramework}
             style={{ width: '100%' }}
@@ -203,7 +203,7 @@ class ProjectNewModal extends React.Component {
             ))}
           </Select>
         </Form.Item>
-        <Form.Item label="Location" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
+        <Form.Item colon={false} label="Location" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
           {getFieldDecorator('isCustomLocation', {
             rules: [
               {
@@ -236,38 +236,41 @@ class ProjectNewModal extends React.Component {
           )}
         </Form.Item>
         {!this.state.useDefaultLocation && this.renderExplorer()}
-        <Form.Item label="Spine" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
-          {getFieldDecorator('isCustomSpineLocation', {
-            rules: [
-              {
-                validator: (rule, value, callback) =>
-                  setTimeout(
-                    () =>
-                      callback(
-                        this.state.useDefaultSpineLocation || this.state.spineLocation
-                          ? undefined
-                          : true
-                      ),
-                    200
-                  ),
-                message: 'Please select a custom spine folder location!',
-              },
-            ],
-          })(
-            <Checkbox
-              onChange={::this.onDidUseDefaultSpineLocation}
-              checked={this.state.useDefaultSpineLocation}
-            >
-              Use default spine location
-              <Tooltip
-                title={`Default location for Spine folder is: "${this.props.spineDir}"`}
-                overlayStyle={{ wordBreak: 'break-all' }}
+
+        {this.state.selectedFramework === 'spine' && (
+          <Form.Item colon={false} label="Spine" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }} style={{ marginTop: '-10px' }}>
+            {getFieldDecorator('isCustomSpineLocation', {
+              rules: [
+                {
+                  validator: (rule, value, callback) =>
+                    setTimeout(
+                      () =>
+                        callback(
+                          this.state.useDefaultSpineLocation || this.state.spineLocation
+                            ? undefined
+                            : true
+                        ),
+                      200
+                    ),
+                  message: 'Please select a custom spine folder location!',
+                },
+              ],
+            })(
+              <Checkbox
+                onChange={::this.onDidUseDefaultSpineLocation}
+                checked={this.state.useDefaultSpineLocation}
               >
-                <Icon type="question-circle" style={{ marginLeft: '5px' }} />
-              </Tooltip>
-            </Checkbox>
-          )}
-        </Form.Item>
+                Use default spine location
+                <Tooltip
+                  title={`Default location for Spine folder is: "${this.props.spineDir}"`}
+                  overlayStyle={{ wordBreak: 'break-all' }}
+                >
+                  <Icon type="question-circle" style={{ marginLeft: '5px' }} />
+                </Tooltip>
+              </Checkbox>
+            )}
+          </Form.Item>
+        )}
         {!this.state.useDefaultSpineLocation && this.renderSpineExplorer()}
       </Form>
     );
