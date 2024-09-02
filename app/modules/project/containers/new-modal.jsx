@@ -35,24 +35,28 @@ class ProjectNewModal extends React.Component {
     onCancel: PropTypes.func.isRequired,
 
     projectsDir: PropTypes.string,
-
     spineDir: PropTypes.string,
     addProject: PropTypes.func.isRequired,
     openProject: PropTypes.func.isRequired,
     initProject: PropTypes.func.isRequired,
     osOpenUrl: PropTypes.func.isRequired,
+    buildDir: PropTypes.string,
   };
-
   constructor() {
+
     super(...arguments);
+
+    console.log(...arguments);
     this.state = {
       selectedFramework: null,
       useDefaultLocation: true,
       useDefaultSpineLocation: true,
+      useDefaultBuildLocation: true,
       frameworks: [],
       projectLocation: null,
       spineLocation: '',
       inProgress: false,
+      BuildLocation: null,
     };
   }
 
@@ -81,6 +85,12 @@ class ProjectNewModal extends React.Component {
       useDefaultSpineLocation: e.target.checked,
     });
   }
+  onDidUseDefaultBuildLocation(e) {
+    this.setState({
+      useDefaultBuildLocation: e.target.checked,
+    });
+  }
+
 
   onDidProjectLocation(projectLocation) {
     this.props.form.resetFields(['isCustomLocation']);
@@ -95,7 +105,12 @@ class ProjectNewModal extends React.Component {
       spineLocation,
     });
   }
-
+  onDidBuildLocation(BuildLocation) {
+    this.props.form.resetFields(['isBuildLocation']);
+    this.setState({
+      BuildLocation,
+    });
+  }
   onDidFinish() {
     this.props.form.resetFields(['isCustomLocation']);
     this.props.form.validateFields((err, values) => {
@@ -112,12 +127,15 @@ class ProjectNewModal extends React.Component {
       const spineLocation = this.state.useDefaultSpineLocation
         ? this.props.spineDir
         : this.state.spineLocation;
-  
+      const BuildLocation = this.state.useDefaultBuildLocation
+        ? path.join(projectLocation, values.name , "build")
+        : path.join(this.state.BuildLocation, "build");
       this.props.initProject(
         values.board.id,
         this.state.selectedFramework,
         path.join(projectLocation, values.name),
         spineLocation,
+        BuildLocation,
         (err, location) => {
           this.setState({
             inProgress: false,
@@ -272,6 +290,48 @@ class ProjectNewModal extends React.Component {
           </Form.Item>
         )}
         {!this.state.useDefaultSpineLocation && this.renderSpineExplorer()}
+
+        {this.state.selectedFramework==='combine' &&(
+          <Form.Item colon={false} label="Build Dir" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }} style={{ marginTop: '-10px' }}>
+            {getFieldDecorator('isBuildLocation', {
+              rules: [
+                {
+                  validator: (rule, value, callback) =>
+                    setTimeout(
+                      () =>
+                        callback(
+                          this.state.useDefaultBuildLocation || this.state.BuildLocation
+                            ? undefined
+                            : true
+                        ),
+                      200
+                    ),
+                  message: 'Please select a Build Directory location!',
+                },
+              ],
+            })(
+              <Checkbox
+                onChange={::this.onDidUseDefaultBuildLocation}
+                checked={this.state.useDefaultBuildLocation}
+              >
+                Use default Build Directory location
+                <Tooltip
+                  title={`Default location for Build Directory is: "${
+                  path.join(
+                    this.state.useDefaultLocation
+                    ? this.props.projectsDir
+                    : this.state.projectLocation
+                    , (this.props.form.getFieldValue('name') || 'project'), "build")}"`}
+                  overlayStyle={{ wordBreak: 'break-all' }}
+                >
+                  <Icon type="question-circle" style={{ marginLeft: '5px' }} />
+                </Tooltip>
+              </Checkbox>
+        )}
+          </Form.Item>
+        )}
+        {!this.state.useDefaultBuildLocation && this.renderBuildExplorer()}
+
       </Form>
     );
   }
@@ -297,6 +357,16 @@ class ProjectNewModal extends React.Component {
       </div>
     );
   }
+  renderBuildExplorer() {
+    return (
+      <div>
+        <div style={{ marginBottom: '5px' }}>
+          Choose a location for the Build folder:
+        </div>
+        <FileExplorer ask="directory" onSelect={::this.onDidBuildLocation} />
+      </div>
+    );
+  }
 
 }
 
@@ -306,6 +376,8 @@ function mapStateToProps(state) {
   return {
     projectsDir: selectStorageItem(state, 'projectsDir'),
     spineDir: selectStorageItem(state, 'spineDir'),
+    buildDir: selectStorageItem(state, 'buildDir'),
+    
   };
 }
 
