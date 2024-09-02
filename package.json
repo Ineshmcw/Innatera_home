@@ -15,7 +15,7 @@
     "format": "prettier --write \"app/**/*.js*\" \"app/**/*.less\"",
     "sizeinspect": "ANALYZE=1 npm run build"
   },
-  "homepage": "https://platformio.org",
+  "homepage": "https://innatera.com",
   "license": "Apache-2.0",
   "dependencies": {
     "antd": "~3.26.20",
@@ -152,6 +152,7 @@
   },
   "workspaces": [
     "platformio",
-    "aceinna"
+    "aceinna",
+    "innatera"
   ]
 }

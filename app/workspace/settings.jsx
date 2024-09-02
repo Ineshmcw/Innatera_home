@@ -21,10 +21,12 @@ import React from 'react';
 const workspaces = {
   platformio: require('./platformio/index').default,
   aceinna: require('./aceinna/index').default,
+  innatera: require('./innatera/index').default,
 };
 
 const customWorkspaceName = getQueryVariable('workspace');
-const workspace = workspaces[customWorkspaceName] || workspaces['platformio'];
+//const workspace = workspaces[customWorkspaceName] || workspaces['platformio'];
+const workspace = workspaces[customWorkspaceName] || workspaces['innatera'];
 
 export function get(id, defaultValue = undefined) {
   return workspace[id] || defaultValue;

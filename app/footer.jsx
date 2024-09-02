@@ -90,15 +90,15 @@ class AppFooter extends React.Component {
         <ul className="list-inline">
           <li>Powered by</li>
           <li>
-            <a onClick={() => this.props.osOpenUrl('https://platformio.org')}>
+            <a onClick={() => this.props.osOpenUrl('https://innatera.com/')}>
               <img
-                src={require('./workspace/platformio/platformio_logo.png').default}
+                src={require('./workspace/innatera/innatera.png').default}
                 height="38"
               />
             </a>
           </li>
           <li className="pio-company-text">
-            <a onClick={() => this.props.osOpenUrl('https://platformio.org')}>
+            <a onClick={() => this.props.osOpenUrl('https://innatera.com')}>
               <h3>
                 PlatformIO <small>Enterprise</small>
               </h3>
