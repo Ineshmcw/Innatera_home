@@ -45,8 +45,6 @@ class ProjectNewModal extends React.Component {
   constructor() {
 
     super(...arguments);
-
-    console.log(...arguments);
     this.state = {
       selectedFramework: null,
       useDefaultLocation: true,
@@ -128,8 +126,8 @@ class ProjectNewModal extends React.Component {
         ? this.props.spineDir
         : this.state.spineLocation;
       const BuildLocation = this.state.useDefaultBuildLocation
-        ? path.join(projectLocation, values.name , "build")
-        : path.join(this.state.BuildLocation, "build");
+        ? path.join(projectLocation, values.name , 'build')
+        : path.join(this.state.BuildLocation, 'build');
       this.props.initProject(
         values.board.id,
         this.state.selectedFramework,
@@ -321,7 +319,7 @@ class ProjectNewModal extends React.Component {
                     this.state.useDefaultLocation
                     ? this.props.projectsDir
                     : this.state.projectLocation
-                    , (this.props.form.getFieldValue('name') || 'project'), "build")}"`}
+                    , (this.props.form.getFieldValue('name') || 'project'), 'build')}"`}
                   overlayStyle={{ wordBreak: 'break-all' }}
                 >
                   <Icon type="question-circle" style={{ marginLeft: '5px' }} />

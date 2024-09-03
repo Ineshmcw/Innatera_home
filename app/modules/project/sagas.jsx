@@ -298,7 +298,6 @@ function* watchInitProject() {
   while (true) {
     const { board, framework, projectDir, spineDir,buildDir, onEnd } = yield take(actions.INIT_PROJECT);
 
-    console.log("buildDir",buildDir)
     let err,
       result = null;
     try {
