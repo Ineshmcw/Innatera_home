@@ -69,6 +69,10 @@ class ProjectNewModal extends React.Component {
   onDidFramework(framework) {
     this.setState({
       selectedFramework: framework,
+      useDefaultSpineLocation: true,
+      spineLocation: '',
+      useDefaultBuildLocation: true,
+      BuildLocation: null
     });
   }
 
@@ -204,21 +208,22 @@ class ProjectNewModal extends React.Component {
             ],
           })(<BoardSelect onChange={::this.onDidBoard} />)}
         </Form.Item>
-        <Form.Item colon={false} label="Framework" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
-          <Select
-            value={this.state.selectedFramework}
-            style={{ width: '100%' }}
-            size="large"
-            disabled={!this.state.selectedFramework}
-            onChange={::this.onDidFramework}
-          >
-            {this.state.frameworks.map((item) => (
-              <Select.Option key={item.name} value={item.name} title={item.title}>
-                {item.title}
-              </Select.Option>
-            ))}
-          </Select>
-        </Form.Item>
+        {this.state.selectedFramework && (
+          <Form.Item colon={false} label="Framework" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
+            <Select
+              value={this.state.selectedFramework}
+              style={{ width: '100%' }}
+              size="large"
+              onChange={::this.onDidFramework}
+            >
+              {this.state.frameworks.map((item) => (
+                <Select.Option key={item.name} value={item.name} title={item.title}>
+                  {item.title}
+                </Select.Option>
+              ))}
+            </Select>
+          </Form.Item>
+        )}
         <Form.Item colon={false} label="Location" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
           {getFieldDecorator('isCustomLocation', {
             rules: [
@@ -253,7 +258,7 @@ class ProjectNewModal extends React.Component {
         </Form.Item>
         {!this.state.useDefaultLocation && this.renderExplorer()}
 
-        {this.state.selectedFramework === 'spine' && (
+        {this.state.selectedFramework && (this.state.selectedFramework === 'spine' || this.state.selectedFramework === 'combine') && (
           <Form.Item colon={false} label="Spine" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }} style={{ marginTop: '-10px' }}>
             {getFieldDecorator('isCustomSpineLocation', {
               rules: [
@@ -289,7 +294,7 @@ class ProjectNewModal extends React.Component {
         )}
         {!this.state.useDefaultSpineLocation && this.renderSpineExplorer()}
 
-        {this.state.selectedFramework==='combine' &&(
+        {this.state.selectedFramework === 'combine' && (
           <Form.Item colon={false} label="Build Dir" labelCol={{ span: 4 }} wrapperCol={{ span: 20 }} style={{ marginTop: '-10px' }}>
             {getFieldDecorator('isBuildLocation', {
               rules: [
@@ -325,7 +330,7 @@ class ProjectNewModal extends React.Component {
                   <Icon type="question-circle" style={{ marginLeft: '5px' }} />
                 </Tooltip>
               </Checkbox>
-        )}
+            )}
           </Form.Item>
         )}
         {!this.state.useDefaultBuildLocation && this.renderBuildExplorer()}
