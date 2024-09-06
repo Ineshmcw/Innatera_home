@@ -30,13 +30,13 @@ const messages = {
 export default {
   name: 'innatera',
   title: 'Innatera',
-  companyLogoSrc: require('./innatera.png').default,
+  companyLogoSrc: require('./innatera_logo.png').default,
   showPIOVersions: true,
   footerQuickLinks: [
     { title: 'Web', url: urls.home },
     { title: 'Open Source', url: urls.github },
-    { title: 'Get Started', url: 'http://docs.platformio.org/page/ide/pioide.html' },
-    { title: 'Docs', url: 'http://docs.platformio.org' },
+   // { title: 'Get Started', url: 'http://docs.platformio.org/page/ide/pioide.html' },
+   // { title: 'Docs', url: 'http://docs.platformio.org' },
     { title: 'News', url: urls.twitter },
     { title: 'Community', url: urls.community },
     { title: 'Contact Us', url: 'https://innatera.com/contact' },

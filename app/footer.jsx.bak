@@ -96,7 +96,7 @@ class AppFooter extends React.Component {
                 height="38"
               />
             </a>
-          </li>
+          </li>//127.0.0.1
  
         </ul>
       </div>

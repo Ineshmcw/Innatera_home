@@ -190,7 +190,7 @@ export default class AccountRegistrationForm extends React.Component {
             htmlType="submit"
             className="block account-submit-button"
           >
-            Create Your PIO Account
+            Create Your Innatera Account
           </Button>
           <div>
             Already have an account?{' '}

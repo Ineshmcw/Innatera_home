@@ -93,7 +93,7 @@ class DeviceSerialPage extends React.Component {
           showIcon
           message={
             <div>
-              PlatformIO automatically detects upload port by default. You can configure
+              Innatera automatically detects upload port by default. You can configure
               a custom port using <code>upload_port</code> option in{' '}
               <b>platformio.ini</b>.{' '}
               <a

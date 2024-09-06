@@ -76,7 +76,7 @@ export default class ProjectInitCarousel extends React.Component {
             message="platformio.ini"
             description={
               <div>
-                <div>PlatformIO Project Configuration File:</div>
+                <div>Innatera Project Configuration File:</div>
                 <ul className="block list-styled">
                   <li>
                     <code>Generic options</code> - development platforms, boards,
@@ -116,7 +116,7 @@ export default class ProjectInitCarousel extends React.Component {
             description={
               <div>
                 <div className="block">
-                  PlatformIO automatically detects upload port by default. You can
+                  Innatera automatically detects upload port by default. You can
                   configure a custom port using <code>upload_port</code> option in{' '}
                   <b>platformio.ini</b>:
                 </div>

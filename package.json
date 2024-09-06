@@ -1,7 +1,7 @@
 {
-  "name": "platformio-home",
-  "version": "3.4.4",
-  "description": "PlatformIO Home",
+  "name": "Innatera-home",
+  "version": "3.3.3",
+  "description": "Innatera Home",
   "repository": {
     "type": "git",
     "url": "https://github.com/platformio/platformio-home.git"

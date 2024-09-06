@@ -16,7 +16,8 @@ const mediaDir = path.join(rootDir, 'app', 'media');
 const packageConfig = JSON.parse(
   fs.readFileSync(path.join(rootDir, 'package.json'), 'utf8')
 );
-const workspace = process.env.PIOHOME_WORKSPACE || 'platformio'; // Default to 'platformio' if not set
+//const workspace = process.env.PIOHOME_WORKSPACE || 'platformio'; // Default to 'platformio' if not set
+const workspace = process.env.PIOHOME_WORKSPACE || 'innatera'; // Default to 'platformio' if not set
 const theme = process.env.PIOHOME_THEME || 'dark'; // Default to 'dark' if not set
 const themes = packageConfig.themes || {}; // Access the 'themes' directly
 

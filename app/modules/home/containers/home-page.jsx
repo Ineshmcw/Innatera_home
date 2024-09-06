@@ -135,12 +135,12 @@ class HomePage extends React.Component {
             </Col>
             <Col span={12}>{this.renderQuickAccess()}</Col>
           </Row>
-          <RecentNews />
-          <RecentProjectsBlock
+         {/*<RecentNews /> */}
+         <RecentProjectsBlock
             router={this.context.router}
             showProjectExamplesModal={::this.onDidProjectExamples}
             showOpenProjectModal={::this.onDidOpenProject}
-          />
+          /> 
         </div>
       </section>
     );

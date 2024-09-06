@@ -24,7 +24,7 @@ import OpenInBrowser from './modules/core/containers/open-in-browser';
 import PropTypes from 'prop-types';
 import React from 'react';
 import RoutedMenu from './modules/core/containers/routed-menu';
-import SocialButtons from './modules/core/containers/social-buttons';
+//import SocialButtons from './modules/core/containers/social-buttons';
 import routes from './routes';
 
 export default class App extends React.Component {
@@ -65,9 +65,9 @@ export default class App extends React.Component {
                   <li>
                     <OpenInBrowser />
                   </li>
-                  <li>
+                 {/* <li>
                     <SocialButtons />
-                  </li>
+                  </li> */}
                 </ul>
               </td>
               <td className="account-bar text-right">

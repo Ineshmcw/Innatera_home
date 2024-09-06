@@ -53,14 +53,15 @@ class RecentNews extends React.Component {
     return (
       <div className="recent-news">
         <Divider>
-          <a onClick={() => this.props.osOpenUrl(workspaceSettings.getUrl('linkedin'))}>
+         <a onClick={() => this.props.osOpenUrl(workspaceSettings.getUrl('linkedin'))}>
             Recent News
-          </a>
-        </Divider>
+          </a> 
+        </Divider> 
         {this.renderCarousel()}
       </div>
     );
   }
+    
 
   renderCarousel() {
     if (!this.props.items) {
