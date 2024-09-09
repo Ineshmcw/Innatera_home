@@ -46,7 +46,7 @@ class PioVersions extends React.Component {
               }
             >
              {/* {this.renderCoreVersion()} */}
-             {"1.0.0"}
+             {'1.0.0'}
             </a>
           </li>
           <li>·</li>
@@ -60,7 +60,7 @@ class PioVersions extends React.Component {
               }
             >
            {/*   <code>{APP_VERSION}</code> */}
-           <code>{"1.0.0"}</code>
+           <code>{'1.0.0'}</code>
             </a>
           </li>
         </ul>
