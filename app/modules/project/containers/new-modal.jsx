@@ -69,10 +69,6 @@ class ProjectNewModal extends React.Component {
   onDidFramework(framework) {
     this.setState({
       selectedFramework: framework,
-      useDefaultSpineLocation: true,
-      spineLocation: '',
-      useDefaultBuildLocation: true,
-      BuildLocation: null
     });
   }
 
@@ -321,9 +317,7 @@ class ProjectNewModal extends React.Component {
                 <Tooltip
                   title={`Default location for Build Directory is: "${
                   path.join(
-                    this.state.useDefaultLocation
-                    ? this.props.projectsDir
-                    : this.state.projectLocation
+                    this.props.projectsDir
                     , (this.props.form.getFieldValue('name') || 'project'), 'build')}"`}
                   overlayStyle={{ wordBreak: 'break-all' }}
                 >
