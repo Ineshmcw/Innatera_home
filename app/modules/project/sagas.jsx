@@ -296,7 +296,8 @@ function* watchImportProject() {
 
 function* watchInitProject() {
   while (true) {
-    const { board, framework, projectDir, spineDir, onEnd } = yield take(actions.INIT_PROJECT);
+    const { board, framework, projectDir, spineDir,buildDir, onEnd } = yield take(actions.INIT_PROJECT);
+
     let err,
       result = null;
     try {
@@ -304,7 +305,7 @@ function* watchInitProject() {
 
       result = yield call(backendFetchData, {
         query: 'project.init',
-        params: [ board, framework, projectDir, spineDir ],
+        params: [ board, framework, projectDir, spineDir,buildDir ],
       });
 
       ReactGA.timing({
