@@ -178,7 +178,7 @@ class ProjectNewModal extends React.Component {
     return (
       <Form hideRequiredMark>
         <div className="block">
-          This wizard allows you to <b>create new</b> PlatformIO project or{' '}
+          This wizard allows you to <b>create new</b> Innatera project or{' '}
           <b>update existing</b>. In the last case, you need to uncheck &quot;Use
           default location&quot; and specify path to existing project.
         </div>

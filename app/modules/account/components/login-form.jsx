@@ -121,7 +121,7 @@ export default class AccountLoginForm extends React.Component {
           <p>
             Please provide valid credential details for{' '}
             {this.state.providerName.toUpperCase()}. If everything is OK, you will be
-            redirected back to PlatformIO Home <b>in your browser instead of IDE</b>.
+            redirected back to Innatera Home <b>in your browser instead of IDE</b>.
           </p>
           <p>
             The final step is to <b>back to IDE</b> and close this modal window. You

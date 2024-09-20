@@ -45,7 +45,8 @@ class PioVersions extends React.Component {
                 this.props.osOpenUrl('https://docs.platformio.org/page/history.html')
               }
             >
-              {this.renderCoreVersion()}
+             {/* {this.renderCoreVersion()} */}
+             {'1.0.0'}
             </a>
           </li>
           <li>·</li>
@@ -54,11 +55,12 @@ class PioVersions extends React.Component {
             <a
               onClick={() =>
                 this.props.osOpenUrl(
-                  'https://github.com/platformio/platformio-home/releases'
+                  'https://github.com/Ineshmcw/Innatera_home/releases'
                 )
               }
             >
-              <code>{APP_VERSION}</code>
+           {/*   <code>{APP_VERSION}</code> */}
+           <code>{'1.0.0'}</code>
             </a>
           </li>
         </ul>

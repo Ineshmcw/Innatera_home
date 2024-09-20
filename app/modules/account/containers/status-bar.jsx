@@ -32,7 +32,7 @@ class AccountStatusBar extends React.Component {
         type="default"
         shape="circle"
         icon="user"
-        title="PIO Account"
+        title="Innatera Account"
         onClick={() => this.props.showInformationPage()}
       />
     );

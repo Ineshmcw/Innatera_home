@@ -500,7 +500,7 @@ export default class Boards extends React.Component {
   renderNotifications() {
     return (
       <div>
-        PlatformIO currently supports over 800 boards from leading manufacturers, and we
+        Innatera currently supports the Spiking Neural Processor (SNP) family of ultra-low power processors enables high-performance pattern recognition at the sensor edge, and we
         are constantly adding new ones.
         <br />
         You can be part of the process by letting us know what board you wish to see

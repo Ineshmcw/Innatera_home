@@ -64,7 +64,7 @@ function* watchAddProject() {
       if (options.onEnd) {
         yield call(
           options.onEnd,
-          'This is not PlatformIO Project (should contain "platformio.ini" file).',
+          'This is not Innatera Project (should contain "platformio.ini" file).',
           projectDir
         );
       }

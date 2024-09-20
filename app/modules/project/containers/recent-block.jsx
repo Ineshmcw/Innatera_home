@@ -140,6 +140,7 @@ class RecentProjectsBlock extends React.Component {
     );
   }
 
+
   renderProjects() {
     if (!this.props.items) {
       return (

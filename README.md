@@ -67,3 +67,4 @@ To run Innatera Home, you can either use the installed [Innatera Core](https://g
 * Copy the generated compiled files and replace them in the `~/.platformio/packages/contrib-piohome` directory.
 * Relaunch Innatera Home using either the installed [Innatera Core](https://github.com/MohammedTaherMcW/Innatera_core/blob/master/README.rst) or the manual command.
 
+# Innatera_home

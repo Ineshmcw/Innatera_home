@@ -86,7 +86,7 @@ function* watchLoadAccountInfo() {
           err instanceof jsonrpc.JsonRpcError && err.data.includes('Error: You are not')
         )
       ) {
-        yield put(notifyError('Could not load PIO Account information', err));
+        yield put(notifyError('Could not load Innatera Account information', err));
       }
     }
     yield put(updateEntity('accountInfo', data || {}));
@@ -105,7 +105,7 @@ function* watchLoginAccount() {
       if (err && err.data) {
         return showAPIErrorMessage(err.data);
       }
-      return yield put(notifyError('Could not log in PIO Account', err));
+      return yield put(notifyError('Could not log in Innatera Account', err));
     } finally {
       if (onEnd) {
         yield call(onEnd);
@@ -142,7 +142,7 @@ function* loginAccountWithCode(client_id, code, redirectUri) {
     if (err && err.data) {
       return showAPIErrorMessage(err.data);
     }
-    return yield put(notifyError('Could not log in PIO Account', err));
+    return yield put(notifyError('Could not log in Innatera Account', err));
   }
 }
 
@@ -158,7 +158,7 @@ function* watchLogoutAccount() {
       if (err && err.data) {
         return showAPIErrorMessage(err.data);
       }
-      return yield put(notifyError('Could not log out PIO Account', err));
+      return yield put(notifyError('Could not log out Innatera Account', err));
     }
   });
 }
@@ -199,7 +199,7 @@ function* watchRegisterAccount() {
         if (err && err.data) {
           return showAPIErrorMessage(err.data);
         }
-        return yield put(notifyError('Could not create PIO Account', err));
+        return yield put(notifyError('Could not create Innatera Account', err));
       } finally {
         if (onEnd) {
           yield call(onEnd, err);
@@ -228,7 +228,7 @@ function* watchForgotAccount() {
       if (err && err.data) {
         return showAPIErrorMessage(err.data);
       }
-      return yield put(notifyError('Could not forgot password for PIO Account', err));
+      return yield put(notifyError('Could not forgot password for Innatera Account', err));
     } finally {
       if (onEnd) {
         yield call(onEnd, err);
@@ -262,7 +262,7 @@ function* watchPasswordAccount() {
         if (err && err.data) {
           return showAPIErrorMessage(err.data);
         }
-        return yield put(notifyError('Could not change password for PIO Account', err));
+        return yield put(notifyError('Could not change password for Innatera Account', err));
       } finally {
         if (onEnd) {
           yield call(onEnd, err);
@@ -290,7 +290,7 @@ function* watchTokenAccount() {
         if (err && err.data) {
           return showAPIErrorMessage(err.data);
         }
-        return yield put(notifyError('Could not fetch PIO Account token', err));
+        return yield put(notifyError('Could not fetch Innatera Account token', err));
       } finally {
         if (onEnd) {
           yield call(onEnd);
@@ -348,7 +348,7 @@ function* watchUpdateProfile() {
         if (err && err.data) {
           return showAPIErrorMessage(err.data);
         }
-        return yield put(notifyError('Could not update profile of PIO Account', err));
+        return yield put(notifyError('Could not update profile of Innatera Account', err));
       } finally {
         if (onEnd) {
           yield call(onEnd, err);
