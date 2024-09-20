@@ -91,13 +91,9 @@ class AppFooter extends React.Component {
           <li>Powered by</li>
           <li>
             <a onClick={() => this.props.osOpenUrl('https://innatera.com/')}>
-              <img
-                src={require('./workspace/innatera/innatera.png').default}
-                height="38"
-              />
+              <strong>Innatera</strong>
             </a>
           </li>
- 
         </ul>
       </div>
     );
