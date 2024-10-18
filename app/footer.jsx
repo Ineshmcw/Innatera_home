@@ -33,7 +33,7 @@ class AppFooter extends React.Component {
       <Layout.Footer>
         <center>
           <div className="block">{this.renderQuickLinks()}</div>
-          {workspaceSettings.get('name') === 'platformio'
+          {workspaceSettings.get('name') === 'innaterapluginio'
             ? this.renderPIOCoreBanner()
             : this.renderPoweredByPlatformIO()}
         </center>
@@ -62,7 +62,7 @@ class AppFooter extends React.Component {
   renderPIOCoreBanner() {
     return (
       <div className="block">
-        If you enjoy using PlatformIO, please star our projects on GitHub!
+        If you enjoy using InnateraPluginIO, please star our projects on GitHub!
         <ul className="list-inline">
           <li>
             <Icon type="star"></Icon>
@@ -73,7 +73,7 @@ class AppFooter extends React.Component {
                 this.props.osOpenUrl('https://github.com/platformio/platformio-core')
               }
             >
-              PlatformIO Core
+              InnateraPluginIO Core
             </a>
           </li>
           <li>

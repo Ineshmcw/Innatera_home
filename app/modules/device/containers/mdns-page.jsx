@@ -132,7 +132,7 @@ class DeviceMDNSPage extends React.Component {
           <div className="text-center">
             <br />
             If you have Network Firewall, please enable incoming connections for
-            PlatformIO Core (mDNS discovery service)
+            InnateraPluginIO Core (mDNS discovery service)
           </div>
         </div>
       );

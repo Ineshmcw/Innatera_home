@@ -137,7 +137,7 @@ class ProjectImportArduinoModal extends React.Component {
       <div>
         <div style={{ marginBottom: '5px' }}>
           Please select a board to initialize a project. You can change it later in{' '}
-          <code>platformio.ini</code> file which will be created in a project directory:
+          <code>innaterapluginio.ini</code> file which will be created in a project directory:
         </div>
         <div className="block">
           <BoardSelect onChange={::this.onDidBoard} />

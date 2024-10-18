@@ -107,7 +107,7 @@ export default class AccountTokenForm extends React.Component {
               </a>{' '}
               operations when you can not authenticate manually.
               <div>
-                PlatformIO handles <b>Personal Authentication Token</b> from an
+                InnateraPluginIO handles <b>Personal Authentication Token</b> from an
                 environment variable{' '}
                 <a
                   onClick={() =>
@@ -116,7 +116,7 @@ export default class AccountTokenForm extends React.Component {
                     )
                   }
                 >
-                  PLATFORMIO_AUTH_TOKEN
+                  InnateraPluginIO_AUTH_TOKEN
                 </a>
                 .
               </div>

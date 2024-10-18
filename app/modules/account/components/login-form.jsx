@@ -151,7 +151,7 @@ export default class AccountLoginForm extends React.Component {
     return (
       <Form onSubmit={::this.onDidSubmit} className="account-form">
         <Form.Item>
-          <h3>Log In with PlatformIO Account</h3>
+          <h3>Log In with InnateraPluginIO Account</h3>
         </Form.Item>
         <Form.Item>
           {getFieldDecorator('username', {

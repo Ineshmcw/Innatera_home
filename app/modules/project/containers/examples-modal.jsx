@@ -150,7 +150,7 @@ class ProjectExamplesModal extends React.Component {
                 this.props.osOpenUrl('http://docs.platformio.org/page/projectconf.html')
               }
             >
-              Project Configuration File &quot;platformio.ini&quot;
+              Project Configuration File &quot;innaterapluginio.ini&quot;
             </a>{' '}
             located in the root of your project.
           </div>
