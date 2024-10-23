@@ -93,18 +93,6 @@ export default class ProjectInitCarousel extends React.Component {
                     <code>Library options</code> - dependencies, extra library storages
                   </li>
                 </ul>
-                <div>
-                  <a
-                    onClick={() =>
-                      this.props.osOpenUrl(
-                        'http://docs.platformio.org/page/projectconf.html'
-                      )
-                    }
-                  >
-                    <Icon type="link" /> Please visit documentation
-                  </a>{' '}
-                  for the other options and examples.
-                </div>
               </div>
             }
           />
