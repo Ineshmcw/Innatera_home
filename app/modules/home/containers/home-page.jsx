@@ -168,7 +168,7 @@ class HomePage extends React.Component {
               </Button>
             </li>
           )}
-          {!workspaceSettings
+          {/* {!workspaceSettings
             .get('ignoreQuickAccessButtons', [])
             .includes('import-arduino-project') && (
             <li>
@@ -185,7 +185,7 @@ class HomePage extends React.Component {
                 Import Arduino Project
               </Button>
             </li>
-          )}
+          )} */}
           <li>
             <ProjectOpenModal
               visible={this.state.openProjectVisible}
@@ -200,7 +200,7 @@ class HomePage extends React.Component {
               Open Project
             </Button>
           </li>
-          <li>
+          {/* <li>
             <ProjectExamplesModal
               router={this.context.router}
               visible={this.state.projectExamplesVisible}
@@ -214,7 +214,7 @@ class HomePage extends React.Component {
             >
               {workspaceSettings.getMessage('homeQuickButtonProjectExamples')}
             </Button>
-          </li>
+          </li> */}
         </ul>
       </div>
     );

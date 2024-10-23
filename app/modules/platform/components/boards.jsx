@@ -477,7 +477,7 @@ export default class Boards extends React.Component {
         )}
         {data && data.length > 0 && (
           <div>
-            {this.renderToolbar()}
+            {/* {this.renderToolbar()} */}
             {this.renderTable(data)}
           </div>
         )}
@@ -502,76 +502,65 @@ export default class Boards extends React.Component {
       <div>
         Innatera currently supports the Spiking Neural Processor (SNP) family of ultra-low power processors enables high-performance pattern recognition at the sensor edge, and we
         are constantly adding new ones.
-        <br />
-        You can be part of the process by letting us know what board you wish to see
-        supported next, by{' '}
-        <a
-          onClick={() =>
-            this.props.osOpenUrl('https://github.com/platformio/platformio-core/issues')
-          }
-        >
-          submitting a feature request
-        </a>
-        .
       </div>
     );
   }
 
-  renderToolbar() {
-    return (
-      <div className="block text-right">
-        <ul className="list-inline">
-          <li>
-            <Button icon="filter" onClick={::this.onDidClearDataFiltersAndSorters}>
-              Clear filters
-            </Button>
-          </li>
-          <li>&nbsp;</li>
-          <li>
-            <Button.Group>
-              <Button
-                type="primary"
-                icon="safety"
-                ghost={!this.isExtraFilterEnabled('certified')}
-                onClick={() => this.onToggleExtraFilter('certified')}
-              >
-                Certified
-              </Button>
-              <Button
-                type="primary"
-                icon="cloud-o"
-                ghost={!this.isExtraFilterEnabled('iot')}
-                onClick={() => this.onToggleExtraFilter('iot')}
-              >
-                IoT-enabled
-              </Button>
-            </Button.Group>
-          </li>
-          <li>Debug: </li>
-          <li>
-            <Button.Group>
-              <Button
-                type="primary"
-                icon="tool"
-                ghost={!this.isExtraFilterEnabled('debug-onboard')}
-                onClick={() => this.onToggleExtraFilter('debug-onboard')}
-              >
-                On-board
-              </Button>
-              <Button
-                type="primary"
-                icon="tool"
-                ghost={!this.isExtraFilterEnabled('debug-external')}
-                onClick={() => this.onToggleExtraFilter('debug-external')}
-              >
-                External
-              </Button>
-            </Button.Group>
-          </li>
-        </ul>
-      </div>
-    );
-  }
+  // renderToolbar() {
+  //   return (
+  //     <div className="block text-right">
+  //       <ul className="list-inline">
+  //         <li>
+  //           <Button icon="filter" onClick={::this.onDidClearDataFiltersAndSorters}>
+  //             Clear filters
+  //           </Button>
+  //         </li>
+  //         <li>&nbsp;</li>
+  //         <li>
+  //           <Button.Group>
+  //             <Button
+  //               type="primary"
+  //               icon="safety"
+  //               ghost={!this.isExtraFilterEnabled('certified')}
+  //               onClick={() => this.onToggleExtraFilter('certified')}
+  //             >
+  //               Certified
+  //             </Button>
+  //             <Button
+  //               type="primary"
+  //               icon="cloud-o"
+  //               ghost={!this.isExtraFilterEnabled('iot')}
+  //               onClick={() => this.onToggleExtraFilter('iot')}
+  //             >
+  //               IoT-enabled
+  //             </Button>
+  //           </Button.Group>
+  //         </li>
+  //         <li>Debug: </li>
+  //         <li>
+  //           <Button.Group>
+  //             <Button
+  //               type="primary"
+  //               icon="tool"
+  //               ghost={!this.isExtraFilterEnabled('debug-onboard')}
+  //               onClick={() => this.onToggleExtraFilter('debug-onboard')}
+  //             >
+  //               On-board
+  //             </Button>
+  //             <Button
+  //               type="primary"
+  //               icon="tool"
+  //               ghost={!this.isExtraFilterEnabled('debug-external')}
+  //               onClick={() => this.onToggleExtraFilter('debug-external')}
+  //             >
+  //               External
+  //             </Button>
+  //           </Button.Group>
+  //         </li>
+  //       </ul>
+  //     </div>
+  //   );
+  // }
 
   renderTable(data) {
     const pagination = {

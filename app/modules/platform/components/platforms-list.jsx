@@ -109,7 +109,7 @@ export default class PlatformsList extends React.Component {
           onChange={(e) => this.onDidFilter(e.target.value)}
           ref={(item) => (item ? item.focus() : null)}
         />
-        <div className="block text-right">
+        {/* <div className="block text-right">
           <Button.Group>
             <Button
               ghost
@@ -133,7 +133,7 @@ export default class PlatformsList extends React.Component {
               Custom Platform
             </Button>
           </Button.Group>
-        </div>
+        </div> */}
       </div>
     );
   }

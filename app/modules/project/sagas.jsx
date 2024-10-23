@@ -55,7 +55,7 @@ const RECENT_PROJECTS_STORAGE_KEY = 'recentProjects';
 
 function* watchAddProject() {
   yield takeEvery(actions.ADD_PROJECT, function* ({ projectDir, options }) {
-    const iniPath = pathlib.join(projectDir, 'innaterapluginio.ini');
+    const iniPath = pathlib.join(projectDir, 'conf.ini');
     const fileExists = yield call(backendFetchData, {
       query: 'os.is_file',
       params: [iniPath],
@@ -64,7 +64,7 @@ function* watchAddProject() {
       if (options.onEnd) {
         yield call(
           options.onEnd,
-          'This is not PlatformIO Project (should contain "innaterapluginio.ini" file).',
+          'This is not PlatformIO Project (should contain "conf.ini" file).',
           projectDir
         );
       }
@@ -414,7 +414,7 @@ function* watchLoadProjectConfig() {
   yield takeLatest(actions.LOAD_PROJECT_CONFIG, function* ({ projectDir }) {
     try {
       yield put(storeActions.deleteEntity(new RegExp(`^${PROJECT_CONFIG_KEY}$`)));
-      const configPath = pathlib.join(projectDir, 'innaterapluginio.ini');
+      const configPath = pathlib.join(projectDir, 'conf.ini');
       const tupleConfig = yield call(backendFetchData, {
         query: 'project.config_load',
         params: [configPath],
@@ -450,12 +450,12 @@ function* watchSaveProjectConfig() {
       try {
         yield call(ensureUserConsent, PROJECT_CONFIG_SAVE_CONSENT_ID, {
           content: `Warning!
-          The entire file contents of innaterapluginio.ini will be rewritten with the current
+          The entire file contents of conf.ini will be rewritten with the current
           configuration defined in this UI.
           Continue to save the configuration?`,
           okText: 'Save',
         });
-        const configPath = pathlib.join(projectDir, 'innaterapluginio.ini');
+        const configPath = pathlib.join(projectDir, 'conf.ini');
         if (!force) {
           const currentMtime = yield call(backendFetchData, {
             query: 'os.get_file_mtime',
@@ -527,7 +527,7 @@ function* watchUpdateConfigDescription() {
         // Patch file via RPC
         yield call(backendFetchData, {
           query: 'project.config_update_description',
-          params: [pathlib.join(projectDir, 'innaterapluginio.ini'), description],
+          params: [pathlib.join(projectDir, 'conf.ini'), description],
         });
         message.success('Project description is saved into configuration file');
       } catch (e) {

@@ -19,7 +19,7 @@ import BoardsPage from './modules/platform/containers/boards-page';
 import DevicePage from './modules/device/index';
 import HomePage from './modules/home/containers/home-page';
 import InspectPage from './modules/inspect';
-import LibraryIndex from './modules/library/index';
+// import LibraryIndex from './modules/library/index';
 import PlatformPage from './modules/platform/index';
 import ProjectsPage from './modules/project';
 
@@ -48,12 +48,12 @@ const routes = [
     label: 'Inspect',
     component: InspectPage,
   },
-  {
-    path: '/libraries',
-    icon: 'book',
-    label: 'Libraries',
-    component: LibraryIndex,
-  },
+  // {
+  //   path: '/libraries',
+  //   icon: 'book',
+  //   label: 'Libraries',
+  //   component: LibraryIndex,
+  // },
   {
     path: '/boards',
     icon: 'calculator',

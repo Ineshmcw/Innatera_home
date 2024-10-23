@@ -95,16 +95,8 @@ class DeviceSerialPage extends React.Component {
             <div>
               Innatera automatically detects upload port by default. You can configure
               a custom port using <code>upload_port</code> option in{' '}
-              <b>innaterapluginio.ini</b>.{' '}
-              <a
-                onClick={() =>
-                  this.props.osOpenUrl(
-                    'http://docs.platformio.org/page/projectconf/section_env_upload.html#upload-port'
-                  )
-                }
-              >
-                More details...
-              </a>
+              <b>conf.ini</b>.{' '}
+          
             </div>
           }
         />

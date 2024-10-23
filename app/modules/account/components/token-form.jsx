@@ -116,7 +116,7 @@ export default class AccountTokenForm extends React.Component {
                     )
                   }
                 >
-                  InnateraPluginIO_AUTH_TOKEN
+                  InnateraPlugin IO_AUTH_TOKEN
                 </a>
                 .
               </div>

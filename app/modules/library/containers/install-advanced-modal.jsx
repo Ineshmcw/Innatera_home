@@ -175,7 +175,7 @@ class LibraryInstallAdvancedModal extends React.Component {
               </a>{' '}
               and its &quot;version&quot; scheme{' '}
               <code>&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;</code>. You can declare
-              library dependencies in &quot;innaterapluginio.ini&quot; configuration file
+              library dependencies in &quot;conf.ini&quot; configuration file
               using{' '}
               <a
                 onClick={() =>

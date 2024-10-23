@@ -297,7 +297,7 @@ function* watchInstallLibrary() {
       const isPlatformIOProject = storageDir
         ? yield call(backendFetchData, {
             query: 'os.is_file',
-            params: [pathlib.join(storageDir, 'innaterapluginio.ini')],
+            params: [pathlib.join(storageDir, 'conf.ini')],
           })
         : false;
       if (storageDir) {

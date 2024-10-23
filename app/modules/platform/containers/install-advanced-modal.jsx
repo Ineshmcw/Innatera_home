@@ -145,7 +145,7 @@ class PlatformInstallAdvancedModal extends React.Component {
 
         <div className="block">
           Project can depend on a specific version of development platform, please use{' '}
-          <code>platform = name@x.y.z</code> option in <b>innaterapluginio.ini</b> in this
+          <code>platform = name@x.y.z</code> option in <b>conf.ini</b> in this
           case.{' '}
           <a
             onClick={() =>
