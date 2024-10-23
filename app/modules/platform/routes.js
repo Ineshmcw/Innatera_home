@@ -33,46 +33,46 @@ const routes = [
     path: '/platforms/installed',
     component: PlatformInstalledPage,
   },
-  {
-    path: '/platforms/embedded',
-    icon: 'build',
-    label: 'Embedded',
-    component: PlatformEmbeddedPage,
-  },
-  {
-    path: '/platforms/desktop',
-    icon: 'desktop',
-    label: 'Desktop',
-    component: PlatformDesktopPage,
-  },
-  {
-    path: '/platforms/frameworks',
-    icon: 'setting',
-    label: 'Frameworks',
-    component: FrameworksPage,
-  },
-  {
-    path: '/platforms/frameworks/show',
-    component: FrameworkDetailPage,
-  },
-  {
-    path: '/platforms/updates',
-    icon: 'cloud-download-o',
-    label: 'Updates',
-    component: PlatformUpdatesPage,
-  },
-  {
-    path: '/platforms/embedded/show',
-    component: PlatformDetailPage,
-  },
-  {
-    path: '/platforms/desktop/show',
-    component: PlatformDetailPage,
-  },
-  {
-    path: '/platforms/installed/show',
-    component: PlatformDetailPage,
-  },
+  // {
+  //   path: '/platforms/embedded',
+  //   icon: 'build',
+  //   label: 'Embedded',
+  //   component: PlatformEmbeddedPage,
+  // },
+  // {
+  //   path: '/platforms/desktop',
+  //   icon: 'desktop',
+  //   label: 'Desktop',
+  //   component: PlatformDesktopPage,
+  // },
+  // {
+  //   path: '/platforms/frameworks',
+  //   icon: 'setting',
+  //   label: 'Frameworks',
+  //   component: FrameworksPage,
+  // },
+  // {
+  //   path: '/platforms/frameworks/show',
+  //   component: FrameworkDetailPage,
+  // },
+  // {
+  //   path: '/platforms/updates',
+  //   icon: 'cloud-download-o',
+  //   label: 'Updates',
+  //   component: PlatformUpdatesPage,
+  // },
+  // {
+  //   path: '/platforms/embedded/show',
+  //   component: PlatformDetailPage,
+  // },
+  // {
+  //   path: '/platforms/desktop/show',
+  //   component: PlatformDetailPage,
+  // },
+  // {
+  //   path: '/platforms/installed/show',
+  //   component: PlatformDetailPage,
+  // },
 ];
 
 export default routes;
