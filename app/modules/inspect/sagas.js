@@ -55,7 +55,7 @@ function* _inspectMemory({ projectDir, env }) {
   const buildDir = yield call(backendFetchData, {
     query: 'project.config_call',
     params: [
-      { path: pathlib.join(projectDir, 'platformio.ini') },
+      { path: pathlib.join(projectDir, 'conf.ini') },
       'get_optional_dir',
       'build',
     ],

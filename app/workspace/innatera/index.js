@@ -16,11 +16,9 @@
 
 const urls = {
   home: 'https://innatera.com',
-  twitter: 'https://twitter.com/innatera',
-  facebook: 'https://www.facebook.com/platformio',
-  linkedin: 'https://www.linkedin.com/company/innatera',
-  github: 'https://github.com/innatera',
+  news: 'https://innatera.com/news/all',
   community: 'https://forum.innatera.com/help',
+  contact: 'https://innatera.com/contact',
 };
 
 const messages = {
@@ -34,12 +32,9 @@ export default {
   showPIOVersions: true,
   footerQuickLinks: [
     { title: 'Web', url: urls.home },
-    { title: 'Open Source', url: urls.github },
-   // { title: 'Get Started', url: 'http://docs.platformio.org/page/ide/pioide.html' },
-   // { title: 'Docs', url: 'http://docs.platformio.org' },
-    { title: 'News', url: urls.twitter },
+    { title: 'News', url: urls.news },
     { title: 'Community', url: urls.community },
-    { title: 'Contact Us', url: 'https://innatera.com/contact' },
+    { title: 'Contact Us', url: urls.contact },
   ],
   urls,
   messages,

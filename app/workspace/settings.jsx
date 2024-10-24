@@ -19,8 +19,6 @@ import { Icon } from 'antd';
 import React from 'react';
 
 const workspaces = {
-  platformio: require('./platformio/index').default,
-  aceinna: require('./aceinna/index').default,
   innatera: require('./innatera/index').default,
 };
 

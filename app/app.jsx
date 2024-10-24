@@ -17,7 +17,7 @@
 import { Button, Layout, Tooltip } from 'antd';
 import { Route, Switch } from 'react-router-dom';
 
-import AccountStatusBar from './modules/account/containers/status-bar';
+// import AccountStatusBar from './modules/account/containers/status-bar';
 import AppFooter from './footer';
 import CompanyLogo from './modules/home/components/company-logo';
 import OpenInBrowser from './modules/core/containers/open-in-browser';
@@ -70,9 +70,9 @@ export default class App extends React.Component {
                   </li> */}
                 </ul>
               </td>
-              <td className="account-bar text-right">
+              {/* <td className="account-bar text-right">
                 {<AccountStatusBar router={router} />}
-              </td>
+              </td> */}
             </tr>
           </tbody>
         </table>

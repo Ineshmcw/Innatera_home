@@ -458,7 +458,7 @@ class ProjectConfig extends React.PureComponent {
 
   handleOpen = () => {
     this.props.openTextDocument(
-      pathlib.join(this.props.project.path, 'platformio.ini')
+      pathlib.join(this.props.project.path, 'conf.ini')
     );
   };
 
@@ -653,7 +653,7 @@ class ProjectConfig extends React.PureComponent {
         {!this.sectionExists(SECTION_GLOBAL_ENV) && (
           <Menu.Item
             key={SECTION_GLOBAL_ENV}
-            title="Common configuration for all environments. Saved as [env] section in the `platformio.ini` file"
+            title="Common configuration for all environments. Saved as [env] section in the `conf.ini` file"
           >
             Common Configuration
           </Menu.Item>
@@ -661,7 +661,7 @@ class ProjectConfig extends React.PureComponent {
         {!this.sectionExists(SECTION_PLATFORMIO) && (
           <Menu.Item
             key={SECTION_PLATFORMIO}
-            title="Saved as [platformio] section in the platformio.ini file"
+            title="Saved as [platformio] section in the conf.ini file"
           >
             PlatformIO Settings
           </Menu.Item>

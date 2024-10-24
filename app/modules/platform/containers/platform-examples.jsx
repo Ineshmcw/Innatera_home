@@ -35,7 +35,7 @@ class PlatformProjectExamples extends React.Component {
   static getGlobPatterns() {
     const patterns = [];
     ['*', path.join('*', '*'), path.join('*', '*', '*')].forEach((wildcard) => {
-      patterns.push(path.join('examples', wildcard, 'platformio.ini'));
+      patterns.push(path.join('examples', wildcard, 'conf.ini'));
       patterns.push(path.join('examples', wildcard, 'src', '*.c'));
       patterns.push(path.join('examples', wildcard, 'src', '*.cpp'));
       patterns.push(path.join('examples', wildcard, 'src', '*.h'));
@@ -58,7 +58,7 @@ class PlatformProjectExamples extends React.Component {
     }
 
     return this.props.uris
-      .filter((uri) => uri.endsWith('platformio.ini'))
+      .filter((uri) => uri.endsWith('conf.ini'))
       .sort()
       .map((configUri) => {
         const projectDir = path.dirname(configUri);

@@ -60,17 +60,7 @@ class PlatformInstalledPage extends React.Component {
           showIcon
           message={
             <div>
-              Project can depend on a specific version of development platform or VCS
-              (Git, Mercurial and Subversion).{' '}
-              <a
-                onClick={() =>
-                  this.props.osOpenUrl(
-                    'http://docs.platformio.org/page/projectconf/section_env_general.html#platform'
-                  )
-                }
-              >
-                More details...
-              </a>
+              Project can depend on a specific version of development platform
             </div>
           }
         />

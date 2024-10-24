@@ -60,7 +60,7 @@ export default class LibraryDetailInstallationBlock extends React.Component {
     const ownedLib = this.props.data.ownername
       ? `${this.props.data.ownername}/${this.props.data.name}`
       : this.props.data.name;
-    let content = `# platformio.ini – project configuration file
+    let content = `# conf.ini – project configuration file
 
 [env:my_build_env]`;
 
@@ -110,7 +110,7 @@ lib_deps =`;
     return (
       <div>
         <h2 style={{ marginTop: 0 }}>
-          Library Dependencies <small>platformio.ini</small>
+          Library Dependencies <small>conf.ini</small>
         </h2>
         <div className="block">
           <p>
@@ -120,7 +120,7 @@ lib_deps =`;
             </a>{' '}
             and its &quot;version&quot; scheme{' '}
             <code>&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;</code>. You can declare
-            library dependencies in &quot;platformio.ini&quot; configuration file using{' '}
+            library dependencies in &quot;conf.ini&quot; configuration file using{' '}
             <a
               onClick={() =>
                 this.props.osOpenUrl(
